@@ -1,17 +1,21 @@
-# config/settings/prod.py
-import dj_database_url
-
 from .settings import *
-
-from decouple import config
+import os
 
 # --- CONFIGURACIÓN DE PRODUCCIÓN ---
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
-# La configuración de la base de datos se lee del mismo .env
-DATABASE_URL = config('DIRECCION_DATABASE')
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': os.environ.get('NAME_DATABASE'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('HOST'),
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 18 for SQL Server',
+        }
+    }
 }
