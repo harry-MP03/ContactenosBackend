@@ -68,4 +68,16 @@ jobs:
         with:
           app-name: 'contactenos-backend'
           slot-name: 'Production'
-          
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_... }} # Esta línea ya debería estar
+          app-settings-json: |
+            [
+              { "name": "HOST", "value": "${{ secrets.HOST }}", "slotSetting": false },
+              { "name": "NAME_DATABASE", "value": "${{ secrets.NAME_DATABASE }}", "slotSetting": false },
+              { "name": "USER", "value": "${{ secrets.USER }}", "slotSetting": false },
+              { "name": "PASSWORD", "value": "${{ secrets.PASSWORD }}", "slotSetting": false },
+              { "name": "SECRET_KEY", "value": "${{ secrets.SECRET_KEY }}", "slotSetting": false },
+              { "name": "ALLOWED_HOSTS", "value": "${{ secrets.ALLOWED_HOSTS }}", "slotSetting": false },
+              { "name": "DJANGO_SETTINGS_MODULE", "value": "config.settings.prod", "slotSetting": false },
+              { "name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "true", "slotSetting": false },
+              { "name": "DISABLE_COLLECTSTATIC", "value": "true", "slotSetting": false }
+            ]
