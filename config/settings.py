@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_filters',
     'drf_yasg',
     'rest_framework_simplejwt',
 ] + Seguridad_Settings_Apps + Catalogos_Settings_Apps
