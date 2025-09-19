@@ -68,7 +68,7 @@ jobs:
         with:
           app-name: 'contactenos-backend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_... }} # Esta línea ya debería estar
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # Esta línea ya debería estar
           app-settings-json: |
             [
               { "name": "HOST", "value": "${{ secrets.HOST }}", "slotSetting": false },
