@@ -1,0 +1,16 @@
+1-para instalar los paquetes:
+pip install -r requirements.txt
+
+2-Migraciones:
+
+python manage.py makemigrations --settings=config.dev
+
+python manage.py migrate --fake-initial --settings=config.dev
+
+3-Iniciar servidor:
+
+python manage.py runserver --settings=config.dev
+
+4-Ingresar a swagger:
+
+swagger/
