@@ -68,16 +68,14 @@ jobs:
         with:
           app-name: 'contactenos-backend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # Esta línea ya debería estar
-          app-settings-json: |
-            [
-              { "name": "HOST", "value": "${{ secrets.HOST }}", "slotSetting": false },
-              { "name": "NAME_DATABASE", "value": "${{ secrets.NAME_DATABASE }}", "slotSetting": false },
-              { "name": "USER", "value": "${{ secrets.USER }}", "slotSetting": false },
-              { "name": "PASSWORD", "value": "${{ secrets.PASSWORD }}", "slotSetting": false },
-              { "name": "SECRET_KEY", "value": "${{ secrets.SECRET_KEY }}", "slotSetting": false },
-              { "name": "ALLOWED_HOSTS", "value": "${{ secrets.ALLOWED_HOSTS }}", "slotSetting": false },
-              { "name": "DJANGO_SETTINGS_MODULE", "value": "config.settings.prod", "slotSetting": false },
-              { "name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "true", "slotSetting": false },
-              { "name": "DISABLE_COLLECTSTATIC", "value": "true", "slotSetting": false }
-            ]
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          app-settings: |
+            HOST=${{ secrets.HOST }}
+            NAME_DATABASE=${{ secrets.NAME_DATABASE }}
+            USER=${{ secrets.USER }}
+            PASSWORD=${{ secrets.PASSWORD }}
+            SECRET_KEY=${{ secrets.SECRET_KEY }}
+            ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+            DJANGO_SETTINGS_MODULE=config.settings.prod
+            SCM_DO_BUILD_DURING_DEPLOYMENT=true
+            DISABLE_COLLECTSTATIC=true
