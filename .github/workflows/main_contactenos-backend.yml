@@ -69,13 +69,4 @@ jobs:
           app-name: 'contactenos-backend'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          app-settings: |
-            HOST=${{ secrets.HOST }}
-            NAME_DATABASE=${{ secrets.NAME_DATABASE }}
-            USER=${{ secrets.USER }}
-            PASSWORD=${{ secrets.PASSWORD }}
-            SECRET_KEY=${{ secrets.SECRET_KEY }}
-            ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
-            DJANGO_SETTINGS_MODULE=config.settings.prod
-            SCM_DO_BUILD_DURING_DEPLOYMENT=true
-            DISABLE_COLLECTSTATIC=true
+          configuration-file: './appsettings.json'
