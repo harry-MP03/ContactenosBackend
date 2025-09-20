@@ -58,9 +58,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3897B76BC165443BB81770479643EBA0 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_94AA6B47FDB14AB080AA444B64768395 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CF0BA15B57EA4471A9CE3A91E57E238F }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_32E70B32C063471086C38D1E0927715F }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F4485343C0E2427BAB13CC626B99B5D1 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E9AD926EE9F04DDBADF4F392A8997EED }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -68,5 +68,4 @@ jobs:
         with:
           app-name: 'contactenos-backend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          configuration-file: './appsettings.json'
+          
