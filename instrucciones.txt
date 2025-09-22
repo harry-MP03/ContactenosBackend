@@ -1,3 +1,4 @@
+#Para trabajar de manera Local
 1-para instalar los paquetes:
 pip install -r requirements.txt
 
@@ -5,6 +6,7 @@ pip install -r requirements.txt
 
 python manage.py makemigrations --settings=config.dev
 
+#Como se trata de migrar a una base de datos existentes, se debe de aplicar este comando
 python manage.py migrate --fake-initial --settings=config.dev
 
 3-Iniciar servidor:
@@ -14,3 +16,36 @@ python manage.py runserver --settings=config.dev
 4-Ingresar a swagger:
 
 swagger/
+
+#Para desplegar aplicacion despues de crear la web app con comando
+#Tener el archivo requirements.txt, si no lo tienes, activa tu entorno virtual
+
+conda activate miEntorno #solo para uso de Conda
+
+#Listar y agregar los paquetes
+
+freeze > requirements.txt
+
+#Tener tu archivo startup.txt para que azure ejecute el comando que da arranque a la aplicacion gunicorn
+#Revisa el archivo con el mismo nombre, copia y pega el codigo y adaptalo a tu proyecto, debes de tener instalado
+#el paquete gunicorn, busca en el requirements de este proyecto.
+
+#Luego de todo, instala la CLI de Azure en windows en caso de que no la tengas, luego accede a Powershell
+#y ejecuta el siguiente comando para iniciar sesion en azure
+
+	az login
+
+ 2-Ubicarse en la carpeta del proyecto
+
+	cd C:\Users\ejemplo\PycharmProjects\ContactenosApp
+
+ 3-Crear la web app y dejar que despliegue el backend de manera automática (puede tardar minutos):
+
+	az webapp up --name contactenos-backend2025 --location northcentralus --sku F1
+
+ 4-para actualizar el despliegue configurado y especificar el grupo de recursos:
+
+	az webapp up --name contactenos-backend2025 --resource-group Recurso-Proyecto-Contactenos
+
+#Una vez que todo esté realizado, ve a la plataforma de Azure y agrega las variables de entorno para que azure
+#pueda leer el nombre de la base de datos, usuario, contraseña, etc, todo lo que tengas como variable en tu .env
