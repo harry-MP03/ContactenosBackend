@@ -318,6 +318,7 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+
 # Archivos de Azure (generados por herramientas como az webapp up o VS Code)
 .azure/             # Ignora la carpeta .azure generada por las herramientas de Azure CLI/VS Code
 .deployment         # Generado por az webapp up o VS Code
