@@ -7,7 +7,6 @@ from django.http import Http404
 from rest_framework.views import APIView
 import logging.handlers
 
-from Apps.Catalogos.Contactenos.models import Contactos
 from Apps.Catalogos.Contactenos.serializers import ContactosSerializer
 
 logger = logging.getLogger(__name__)

@@ -19,3 +19,6 @@ DATABASES = {
         }
     }
 }
+
+# config/prod.py
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')

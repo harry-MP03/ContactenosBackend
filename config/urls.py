@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import permissions
@@ -8,6 +7,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from django.conf import settings
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -18,6 +18,7 @@ schema_view = get_schema_view(
       contact=openapi.Contact(email="contact@snippets.local"),
       license=openapi.License(name="BSD License"),
    ),
+   url=f'https://{settings.ALLOWED_HOSTS[0]}/',
    public=True,
    permission_classes=[permissions.AllowAny],
 )

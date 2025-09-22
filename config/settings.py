@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import timedelta
 from django.conf.global_settings import AUTH_USER_MODEL
 from pathlib import Path
+import os
 
 from Apps.Catalogos.settings_apps import Catalogos_Settings_Apps
 from Apps.Seguridad.settings_apps import Seguridad_Settings_Apps
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,6 +138,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -153,15 +157,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5500"
 ]
-AUTH_USER_MODEL = 'Usuarios.User'
 
-# ✅ CONFIGURACIÓN CORS PARA PERMITIR EL FRONTEND LOCAL
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:63342",
-    "http://127.0.0.1:63342",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:5500",
-    "http://localhost:5500"
-]
 

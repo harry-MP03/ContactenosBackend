@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - contactos-backend2
+name: Build and deploy Python app to Azure Web App - contactenos-backend2025
 
 on:
   push:
@@ -66,7 +66,8 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'contactos-backend2'
+          app-name: 'contactenos-backend2025'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           configuration-file: './appsettings.json'
+          app-kind: 'webapp'
